@@ -1,14 +1,11 @@
-/* סגנון כללי */
 :root {
     --primary-color: #007bff;
-    --secondary-color: #ffcc00;
-    --background-color: #050101;
     --text-color: #fcf2f2;
+    --background-color: #050101;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    direction: rtl;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -16,37 +13,30 @@ body {
     scroll-behavior: smooth;
 }
 
-/* עיצוב כותרת וניווט */
 header {
     background-color: #070202;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-nav ul {
+.main-nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     gap: 20px;
-}
-
-nav li {
-    display: inline;
+    padding: 0;
+    margin: 0;
 }
 
 .main-nav a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 18px;
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .main-nav a:hover {
@@ -54,73 +44,70 @@ nav li {
     color: white;
 }
 
-/* עיצוב דפים */
 .page {
     min-height: 100vh;
-    
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
     text-align: center;
-    padding: 20px;
-    
 }
 
-.page .content {
+.content {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* עיצוב תמונה אישית */
-#about .resume-image img {
+#about {
+    background-color: #111;
+    padding: 60px 20px;
+}
+
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.resume-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    order: 2; /* שינוי סדר האלמנטים כדי שהתמונה תופיע בצד שמאל */
+}
+
+.resume-image img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 3px solid var(--text-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; /* רווח בין התמונה לכפתור */
 }
 
-#about .resume-image img:hover {
+.resume-image img:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-#about  .content {  
-    margin-top: 20px;
+
+.resume-details {
+    flex: 1;
+    text-align: left;
+    order: 1; /* שינוי סדר האלמנטים כדי שהטקסט יופיע בצד ימין */
 }
 
-#home .content {
-    margin-top: -200px;
-}
-
-/* עיצוב כרטיסיות */
-#facts li {
-    background: rgb(7, 7, 7);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#facts li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* עיצוב כפתורי הורדה */
 .download-link {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background-color: var(--primary-color);
     color: white;
-    font-size: 16px;
     text-decoration: none;
     border-radius: 25px;
+    font-size: 16px;
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -129,7 +116,6 @@ nav li {
     transform: scale(1.05);
 }
 
-/* עיצוב תחתית הדף */
 footer {
     background-color: var(--text-color);
     color: rgb(12, 11, 11);
@@ -137,13 +123,37 @@ footer {
     text-align: center;
     font-size: 16px;
 }
-.contact-info a {
-    color: #0077cc !important; /* צבע לקישורים בתחתית */
-    text-decoration: none;
+
+a {
+    color: var(--primary-color);
 }
 
-.contact-info a:visited {
-    color: #0077cc !important; /* שומר על הצבע גם אחרי לחיצה */
+/* סגנון נוסף לפרויקטים */
+.project-item {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
+.project-item p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* התאמה למסכים קטנים יותר */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+    
+    .resume-image, .resume-details {
+        order: 0; /* מבטל את הסדר המיוחד במסכים קטנים */
+    }
+}
